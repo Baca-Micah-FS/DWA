@@ -1,28 +1,35 @@
 ---
-import { BrowserRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
-
 import Header from "../components/Header"
-const title = "blogsByMic";
+import BlogCard from "../components/BlogCard"
+const title = "blogBuster";
+const blog = "Latest posts"
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="./public/blog-pencil.svg" />
-    <!-- <title>{title}</title> -->
-   
+    <link rel="icon" type="image/svg+xml" href="/blog-pencil.svg" />
+    
+    <title>{title}</title>
+    <style is:global>
+        html, body {  background-color: #b7b7a4 ; } 
+        html { margin: 9px; }
+        /* // html, body margin: 0; padding: 0; ? */
+        /* h1 { margin: 0; } */
+      </style>
+      <!-- :root
+      --Body-background: #b7b7a4
+      --header-background: #3b6064
+      --header-Font: #f7ede2
+      --Body-font: #293241 -->
   </head>
-  <body style="font-family: system-ui, sans-serif; padding: 2rem; line-height: 1.5;">
-    <!-- <BrowserRouter>
+  <body style="font-family: system-ui, sans-serif; color: #293241 ">
     <Header />
-</BrowserRouter> -->
-    <h1>{title}</h1>
-    <p>If you can read this, your Astro site is working 🎉</p>
-    <ul>
-      <li>Edit this file: <code>src/pages/index.astro</code></li>
-      <li>Add more pages by creating files in <code>src/pages</code> (e.g., <code>about.astro</code> → <code>/about</code>)</li>
-    </ul>
+    <BlogCard />
+    <!-- <h1>{blog}</h1>
+    <article>
+        <h2>Is Your Job Being Threatened By AI?</h2>
+    </article> -->
   </body>
 </html>
