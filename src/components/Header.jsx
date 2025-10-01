@@ -1,5 +1,3 @@
-import react from "react";
-import { Link } from "react-router";
 import { FaPencil } from "react-icons/fa6";
 
 const Header = (props) => {
@@ -10,11 +8,11 @@ const Header = (props) => {
         <h1
           style={{
             color: "#f7ede2",
-            fontSize: "40px",
+            fontSize: "30px",
             margin: "17px",
           }}
         >
-          Blogbuster
+          BLOGBUSTER
         </h1>
       </a>
       <nav style={styles.nav}>
@@ -52,7 +50,8 @@ const styles = {
     width: "max-content",
     textDecoration: "none",
     marginLeft: "15px",
-    fontFamily: "system-ui, sans-serif",
+
+    letterSpacing: "3px",
     color: "#f7ede2",
   },
 
