@@ -1,51 +1,56 @@
-export default function BlogCard() {
+export default function BlogCard({
+  href = "/AIpage",
+  title = "Is Your Job Being Threatened By AI?",
+  date = "October 1, 2025",
+  readTime = "Estimated Read 10min",
+  description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+  tag = "#AI",
+  posts = "Latest Posts",
+}) {
   return (
     <section style={styles.wrap}>
-      <h1 style={styles.title}>Latest Posts</h1>
+      <h1 style={styles.title}>{posts}</h1>
       <div style={styles.box}>
-        <article>
-          <h1 style={styles.postTitle}>Is Your Job Being Threatened By AI?</h1>
+        <a style={styles.AI} href={href}>
+          <article style={styles.article}>
+            <h1 style={styles.postTitle}>{title}</h1>
 
-          <div style={styles.paragraph}>
-            <p>October 1, 2025</p>
-            <p>|</p>
-            <p>Estimated Read 10min</p>
-          </div>
-          <p>
-            As the rise in AI usage advances many devopleres are worried about
-            the replacement of jobs in the tech industry
-          </p>
-          <br></br>
-          <div>
-            <button type="button" style={styles.tag}>
-              #AI
-            </button>
-          </div>
-        </article>
+            <div style={styles.paragraph}>
+              <p>{date}</p>
+              <p>|</p>
+              <p>{readTime}</p>
+            </div>
+            <p>{description}</p>
+            <br></br>
+            <div style={styles.footer}>
+              <span style={styles.tag}>{tag}</span>
+            </div>
+          </article>
+        </a>
       </div>
     </section>
   );
 }
 
 const styles = {
-  // container for both the title and the box
+  //container
   wrap: {
     width: "45%",
-    margin: "80px  auto", // centers on the page
+    margin: "80px  auto", // center blog
   },
-  // h1 above the blog box
+
   title: {
     margin: "6px 15px 30px",
     fontSize: "25px",
     color: "#22333b",
   },
-  // bordered “blog box”
+  // border blog
   box: {
     backgroundColor: "#ccccbf",
     border: "3px solid #22333b",
-    height: "300px",
+    // minHeight: "325px",
     boxSizing: "border-box",
-    padding: "30px 30px 0",
+    padding: "30px 30px 20px",
   },
 
   paragraph: {
@@ -58,21 +63,39 @@ const styles = {
 
   postTitle: {
     color: "#3b6064",
-    fontSize: "40px",
+    fontSize: "35px",
     margin: "0",
   },
 
   tag: {
     display: "inline-flex",
     alignItems: "center",
-    padding: "6px 20px", //change padding to make longer or taller
+    padding: "6px 20px",
     borderRadius: 9999,
     border: "1px solid #304e51",
-    background: "rgba(59,96,100,.12)",
+    background: "#3b60641f",
     color: "#3b6064",
     fontSize: "14px",
     fontWeight: "bold",
     lineHeight: 1,
     cursor: "pointer",
+    marginTop: "12px",
   },
+
+  AI: {
+    textDecoration: "none",
+    color: "inherit",
+  },
+
+  //   article: {
+  //     display: "flex",
+  //     flexDirection: "column",
+  //     minHeight: "100%",
+  //   },
+
+  //   footer: {
+  //     marginTop: "auto", // pushes tag to bottom
+  //     paddingTop: "12px", // adds breathing room above tag
+  //     paddingBottom: "20px", // consistent space from card bottom
+  //   },
 };

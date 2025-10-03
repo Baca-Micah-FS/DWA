@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header"
 import BlogCard from "../components/BlogCard"
+import Layout from "../layouts/layout.astro"
 const title = "BlogBuster";
 const blog = "Latest posts"
 ---
@@ -13,8 +14,9 @@ const blog = "Latest posts"
     
     <title>{title}</title>
     <style is:global>
-        html, body {  background-color: #b7b7a4 ; } 
-        html { margin: 9px; }
+        html, body {  background-color: #b7b7a4 ; margin: 0; padding: 0 } 
+        /* html { margin: 9px; } */
+        
         /* // html, body margin: 0; padding: 0; ? */
         /* h1 { margin: 0; } */
       </style>
@@ -25,11 +27,51 @@ const blog = "Latest posts"
       --Body-font: #293241 -->
   </head>
   <body style="font-family: system-ui, sans-serif; color: #293241 ">
-    <Header />
-    <BlogCard />
-    <!-- <h1>{blog}</h1>
-    <article>
-        <h2>Is Your Job Being Threatened By AI?</h2>
-    </article> -->
+   <Layout>
+    <BlogCard 
+    posts = "Latest Posts"
+    href = "/AIpage",
+  title = "Is Your Job Being Threatened By AI?"
+  date = "October 1, 2025",
+  readTime = "Estimated Read 10min",
+  description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+  tag = "#AI",/>
+    <BlogCard 
+    posts = ""
+    href = "/designSystems",
+  title = "Design Systems: How To Keep Your UI Consistent",
+  date = "October 2, 2025",
+  readTime = "Estimated Read 9min",
+  description = "Design systems are the secret sauce behind consistent, professional-looking apps and websites. Learn how they help teams move faster, keep UIs consistent, and make your projects easier to maintain.",
+  tag = "#design-systems",/>
+   <BlogCard 
+   posts = ""
+    href = "/frameworks",
+  title = "The Evolution of Front-End Frameworks: React, Vue, Svelte",
+  date = "October 4, 2025",
+  readTime = "Estimated Read 11min",
+  description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+  tag = "#frameworks"/>
+   </Layout>
+    <!-- <Header /> -->
+    
+    
+    <!-- <BlogCard 
+    posts = "Latest Posts"
+    href = "/AIpage",
+  title = "Is Your Job Being Threatened By AI?"
+  date = "October 1, 2025",
+  readTime = "Estimated Read 10min",
+  description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+  tag = "#AI",/>
+    <BlogCard 
+    posts = ""
+    href = "/designSystems",
+  title = "Design Systems: How To Keep Your UI Consistent",
+  date = "October 2, 2025",
+  readTime = "Estimated Read 9min",
+  description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+  tag = "#AI",/>
+    -->
   </body>
 </html>
