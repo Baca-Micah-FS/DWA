@@ -1,0 +1,104 @@
+---
+import type { CollectionEntry } from 'astro:content'
+type Props = {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props as {
+  post: CollectionEntry<'blog'>
+}
+
+console.log({post})
+---
+<!-- 
+export default function BlogCard({
+  href = "/AIpage",
+  title = "Is Your Job Being Threatened By AI?",
+  date = "October 1, 2025",
+  readTime = "Estimated Read 10min",
+  description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+  tag = "#AI",
+  //   posts = "Latest Posts",
+}) {
+  return ( -->
+    <section >
+      {/* <h1 style={styles.title}>{posts}</h1> */}
+      <div >
+        <a href={`/${post.collection}/${post.slug}`}>
+          <article >
+            <h1 >{post.data.title}</h1>
+
+            <div>
+              <p>{post.data.date}</p>
+              <p>|</p>
+              <p>{post.data.readTime}</p>
+            </div>
+            <p>{post.data.description}</p>
+            <br></br>
+            <div >
+              <span >{post.data.tag}</span>
+            </div>
+          </article>
+        </a>
+      </div>
+    </section>
+  );
+<!-- } -->
+
+<!-- const styles = {
+  //container
+  wrap: {
+    width: "45%",
+    margin: "80px  auto", // center blog
+  },
+
+  title: {
+    margin: "6px 15px 30px",
+    fontSize: "25px",
+    color: "#22333b",
+  },
+  // border blog
+  box: {
+    backgroundColor: "#ccccbf",
+    border: "2px solid #22333b",
+    borderRadius: "10px",
+    boxShadow: "2px 2px 2px 2px #3b6064",
+    // minHeight: "325px",
+    boxSizing: "border-box",
+    padding: "30px 30px 20px",
+  },
+
+  paragraph: {
+    color: "#3b6064",
+    display: "flex",
+    gap: "1rem",
+    fontWeight: "bold",
+    fontSize: "18px",
+  },
+
+  postTitle: {
+    color: "#3b6064",
+    fontSize: "35px",
+    margin: "0",
+  },
+
+  tag: {
+    display: "inline-flex",
+    alignItems: "center",
+    padding: "6px 20px",
+    borderRadius: 9999,
+    border: "1px solid #304e51",
+    background: "#3b60641f",
+    color: "#3b6064",
+    fontSize: "14px",
+    fontWeight: "bold",
+    lineHeight: 1,
+    cursor: "pointer",
+    marginTop: "12px",
+  },
+
+  AI: {
+    textDecoration: "none",
+    color: "inherit",
+  },
+}; -->

@@ -1,20 +1,47 @@
 ---
-const title = "Micah’s Astro Starter";
+import Layout from "../layouts/layout.astro";
+import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from 'astro:content'
+
+const blog = (await getCollection('blog'))
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
-  <body style="font-family: system-ui, sans-serif; padding: 2rem; line-height: 1.5;">
-    <h1>{title}</h1>
-    <p>If you can read this, your Astro site is working 🎉</p>
-    <ul>
-      <li>Edit this file: <code>src/pages/index.astro</code></li>
-      <li>Add more pages by creating files in <code>src/pages</code> (e.g., <code>about.astro</code> → <code>/about</code>)</li>
-    </ul>
-  </body>
-</html>
+<Layout title="BlogBuster">
+    <h2>Latest Posts</h2>
+    {
+          blog.map((post) => (
+            <BlogCard
+              post={post}
+              />
+          ))
+    }
+  <!-- <BlogCard
+    
+    href="/blog/firstpost"
+    title="Is Your Job Being Threatened By AI?"
+    date="October 1, 2025"
+    readTime="Estimated Read 10min"
+    description="As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry"
+    tag="#AI"
+  />
+
+  <BlogCard
+    
+    href="/blog/secondPost"
+    title="Design Systems: How To Keep Your UI Consistent"
+    date="October 2, 2025"
+    readTime="Estimated Read 9min"
+    description="Design systems are the secret sauce behind consistent, professional-looking apps and websites. Learn how they help teams move faster, keep UIs consistent, and make your projects easier to maintain."
+    tag="#design-systems"
+  />
+
+  <BlogCard
+    
+    href="/frameworks"
+    title="The Evolution of Front-End Frameworks: React, Vue, Svelte"
+    date="October 4, 2025"
+    readTime="Estimated Read 11min"
+    description="From component-based design to compiler-first performance, discover how these tools evolved Front-end Development."
+    tag="#frameworks"
+  /> -->
+</Layout>
