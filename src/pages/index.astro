@@ -1,13 +1,21 @@
 ---
 import Layout from "../layouts/layout.astro";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from 'astro:content'
+
+const blog = (await getCollection('blog'))
 ---
 
 <Layout title="BlogBuster">
-    <div style="display: flex; justify-content: center; align-items: left;" >
-    <h2 >Latest Posts</h2>
-</div>
-  <BlogCard
+    <h2>Latest Posts</h2>
+    {
+          blog.map((post) => (
+            <BlogCard
+              post={post}
+              />
+          ))
+    }
+  <!-- <BlogCard
     
     href="/blog/firstpost"
     title="Is Your Job Being Threatened By AI?"
@@ -19,7 +27,7 @@ import BlogCard from "../components/BlogCard";
 
   <BlogCard
     
-    href="/blog/secondpost"
+    href="/blog/secondPost"
     title="Design Systems: How To Keep Your UI Consistent"
     date="October 2, 2025"
     readTime="Estimated Read 9min"
@@ -35,5 +43,5 @@ import BlogCard from "../components/BlogCard";
     readTime="Estimated Read 11min"
     description="From component-based design to compiler-first performance, discover how these tools evolved Front-end Development."
     tag="#frameworks"
-  />
+  /> -->
 </Layout>

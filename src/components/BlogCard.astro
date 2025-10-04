@@ -1,0 +1,89 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type FromPost = { post: CollectionEntry<"blog"> };
+type Manual = {
+  href?: string;
+  title?: string;
+  date?: string;
+  readTime?: string;
+  description?: string;
+  tag?: string;
+};
+
+const props = Astro.props as FromPost | Manual;
+const isPost = (p: any): p is FromPost => "post" in p && p.post;
+
+const url = isPost(props)
+  ? `/${props.post.collection}/${props.post.slug}`
+  : (props.href ?? "/AIpage");
+
+const data = isPost(props)
+  ? props.post.data
+  : {
+      title: props.title ?? "Is Your Job Being Threatened By AI?",
+      date: props.date ?? "October 1, 2025",
+      readTime: props.readTime ?? "Estimated Read 10min",
+      description: props.description ?? "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
+      tag: props.tag ?? "#AI",
+    };
+---
+
+<section style="width:45%; margin:80px auto;">
+  <div
+    style="
+      background-color:#ccccbf;
+      border:2px solid #22333b;
+      border-radius:10px;
+      box-shadow:2px 2px 2px 2px #3b6064;
+      box-sizing:border-box;
+      padding:30px 30px 20px;
+    "
+  >
+    <a href={url} style="text-decoration:none; color:inherit;">
+      <article>
+        <h1 style="color:#3b6064; font-size:35px; margin:0;">
+          {data.title}
+        </h1>
+
+        <div
+          style="
+            color:#3b6064;
+            display:flex;
+            gap:1rem;
+            font-weight:bold;
+            font-size:18px;
+          "
+        >
+          <p style="margin:0;">{data.date}</p>
+          <p style="margin:0;">|</p>
+          <p style="margin:0;">{data.readTime}</p>
+        </div>
+
+        <p>{data.description}</p>
+        <br />
+
+        <div>
+          <span
+            style="
+              display:inline-flex;
+              align-items:center;
+              padding:6px 20px;
+              border-radius:9999px;
+              border:1px solid #304e51;
+              background:#3b60641f;
+              color:#3b6064;
+              font-size:14px;
+              font-weight:bold;
+              line-height:1;
+              cursor:pointer;
+              margin-top:12px;
+            "
+          >
+            {data.tag}
+          </span>
+        </div>
+      </article>
+    </a>
+  </div>
+</section>
