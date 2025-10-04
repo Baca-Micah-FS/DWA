@@ -1,42 +1,20 @@
 ---
-export const prerender = true;
 import Layout from "../../layouts/layout.astro";
-import { getEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 
 const { slug } = Astro.params;
 
-// const entry = await getEntry('blog', slug) as any;
-export async function getStaticPaths() {
-  const posts = (await getCollection('blog'))
-    .filter((post) => !post.data.date)
-    // .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-    console.log({posts})
-  return posts.map((post) => ({
-    params: { slug: post.slug },
-    props: post,
-  }))
+// list what Astro thinks exists
+const posts = await getCollection('blog');
+const slugs = posts.map(p => p.slug);
+
+const entry = posts.find(p => p.slug === String(slug));
+
+if (!entry) {
+  // this will show you the available slugs in the error
+  throw new Error(`Post not found for slug: ${slug}. Available: ${slugs.join(', ')}`);
 }
 
-// const posts = (await getCollection('blog'))
-  
-
-// if (!entry) {
-//   throw new Error(`Post not found for slug: ${slug}`);
-// }
-
-const post = Astro.props
-console.log({post})
-const { Content } = await post.render();
-// const { title } = entry.data;
-
-
+const { Content } = await entry.render();
+const { title } = entry.data;
 ---
-
-<Layout title={post.data.title}>
-  <section style="width:45%; margin:80px auto;">
-    <h1 style="margin:6px 15px 30px; font-size:25px; color:#22333b;">
-      {post.data.title}
-    </h1>
-    <Content />
-  </section>
-</Layout>
