@@ -7,7 +7,9 @@ const blog = (await getCollection('blog'))
 ---
 
 <Layout title="BlogBuster">
-    <h2>Latest Posts</h2>
+    <h2 style="width:45%; margin: 80px auto 25px; text-align:left; color:#22333b; padding-left: 20px; font-size: 26px;">
+        Latest Posts
+      </h2>
     {
           blog.map((post) => (
             <BlogCard
