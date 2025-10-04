@@ -5,11 +5,11 @@ export default function BlogCard({
   readTime = "Estimated Read 10min",
   description = "As the rise in AI usage advances many devopleres are worried about the replacement of jobs in the tech industry",
   tag = "#AI",
-  posts = "Latest Posts",
+  //   posts = "Latest Posts",
 }) {
   return (
     <section style={styles.wrap}>
-      <h1 style={styles.title}>{posts}</h1>
+      {/* <h1 style={styles.title}>{posts}</h1> */}
       <div style={styles.box}>
         <a style={styles.AI} href={href}>
           <article style={styles.article}>
@@ -47,7 +47,9 @@ const styles = {
   // border blog
   box: {
     backgroundColor: "#ccccbf",
-    border: "3px solid #22333b",
+    border: "2px solid #22333b",
+    borderRadius: "10px",
+    boxShadow: "2px 2px 2px 2px #3b6064",
     // minHeight: "325px",
     boxSizing: "border-box",
     padding: "30px 30px 20px",
@@ -86,16 +88,4 @@ const styles = {
     textDecoration: "none",
     color: "inherit",
   },
-
-  //   article: {
-  //     display: "flex",
-  //     flexDirection: "column",
-  //     minHeight: "100%",
-  //   },
-
-  //   footer: {
-  //     marginTop: "auto", // pushes tag to bottom
-  //     paddingTop: "12px", // adds breathing room above tag
-  //     paddingBottom: "20px", // consistent space from card bottom
-  //   },
 };
