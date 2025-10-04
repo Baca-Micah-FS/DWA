@@ -1,3 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content'
+type Props = {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props as {
+  post: CollectionEntry<'blog'>
+}
+
+console.log({post})
+---
+<!-- 
 export default function BlogCard({
   href = "/AIpage",
   title = "Is Your Job Being Threatened By AI?",
@@ -7,32 +20,32 @@ export default function BlogCard({
   tag = "#AI",
   //   posts = "Latest Posts",
 }) {
-  return (
-    <section style={styles.wrap}>
+  return ( -->
+    <section >
       {/* <h1 style={styles.title}>{posts}</h1> */}
-      <div style={styles.box}>
-        <a style={styles.AI} href={href}>
-          <article style={styles.article}>
-            <h1 style={styles.postTitle}>{title}</h1>
+      <div >
+        <a href={`/${post.collection}/${post.slug}`}>
+          <article >
+            <h1 >{post.data.title}</h1>
 
-            <div style={styles.paragraph}>
-              <p>{date}</p>
+            <div>
+              <p>{post.data.date}</p>
               <p>|</p>
-              <p>{readTime}</p>
+              <p>{post.data.readTime}</p>
             </div>
-            <p>{description}</p>
+            <p>{post.data.description}</p>
             <br></br>
-            <div style={styles.footer}>
-              <span style={styles.tag}>{tag}</span>
+            <div >
+              <span >{post.data.tag}</span>
             </div>
           </article>
         </a>
       </div>
     </section>
   );
-}
+<!-- } -->
 
-const styles = {
+<!-- const styles = {
   //container
   wrap: {
     width: "45%",
@@ -88,4 +101,4 @@ const styles = {
     textDecoration: "none",
     color: "inherit",
   },
-};
+}; -->

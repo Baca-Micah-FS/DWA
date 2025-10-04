@@ -8,7 +8,7 @@ const { slug } = Astro.params;
 // const entry = await getEntry('blog', slug) as any;
 export async function getStaticPaths() {
   const posts = (await getCollection('blog'))
-    .filter((post) => !post.data.date)
+    .filter((post) => post.data.date)
     // .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
     console.log({posts})
   return posts.map((post) => ({

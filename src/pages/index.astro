@@ -1,13 +1,23 @@
 ---
 import Layout from "../layouts/layout.astro";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../components/BlogCard.astro";
+import { getCollection } from 'astro:content'
+
+const blog = (await getCollection('blog'))
 ---
 
 <Layout title="BlogBuster">
     <h2>Latest Posts</h2>
-  <BlogCard
+    {
+          blog.map((post) => (
+            <BlogCard
+              post={post}
+              />
+          ))
+    }
+  <!-- <BlogCard
     
-    href="/blog/firstPost"
+    href="/blog/firstpost"
     title="Is Your Job Being Threatened By AI?"
     date="October 1, 2025"
     readTime="Estimated Read 10min"
@@ -33,5 +43,5 @@ import BlogCard from "../components/BlogCard";
     readTime="Estimated Read 11min"
     description="From component-based design to compiler-first performance, discover how these tools evolved Front-end Development."
     tag="#frameworks"
-  />
+  /> -->
 </Layout>
